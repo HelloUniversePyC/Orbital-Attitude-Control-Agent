@@ -1,0 +1,10 @@
+env:
+  alpha: 0.5                   # f-zone penalty weight
+  beta: 0.01                   # angular velocity penalty weight
+  tau_max: 0.1                 # Nm, reaction wheel limit
+  dt: 0.1                      # seconds per step
+  max_steps: 500
+  q_target: [1, 0, 0, 0]      # identity quaternion (nadir pointing)
+  success_threshold: 2.0     # converted to radians in __init__
+  success_bonus: 10.0
+  inertia_tensor: [0.01, 0.01, 0.02]
