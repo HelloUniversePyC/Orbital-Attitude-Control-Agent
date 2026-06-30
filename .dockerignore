@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+.git/
+notebooks/
+models/
+logs/
+.venv/
+data/
+papers/

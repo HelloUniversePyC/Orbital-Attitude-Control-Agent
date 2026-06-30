@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m src.train
+    volumes:
+      - ./models:/app/models        
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    profiles:
+      - train             
+
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m src.main
+    volumes:
+      - ./models:/app/models 
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "8000:8000"                
+    depends_on: []
