@@ -1,5 +1,5 @@
-stable-baselines3==2.3.2 #make sure same version in collab pip installs
-gymnasium==0.29.1
-torch==2.3.0
+stable-baselines3
+gymnasium
+torch
 numpy
 pandas

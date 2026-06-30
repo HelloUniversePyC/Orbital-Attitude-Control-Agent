@@ -8,3 +8,6 @@ env:
   success_threshold: 2.0     # converted to radians in __init__
   success_bonus: 10.0
   inertia_tensor: [0.01, 0.01, 0.02]
+  f_zone_half_angle: float = 20.0
+  boresight_axis: np.ndarray = np.array([1, 0, 0])
+  orbital_rate: 0.00116
