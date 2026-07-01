@@ -1,13 +1,26 @@
 env:
-  alpha: 0.5                   # f-zone penalty weight
-  beta: 0.01                   # angular velocity penalty weight
-  tau_max: 0.1                 # Nm, reaction wheel limit
-  dt: 0.1                      # seconds per step
-  max_steps: 500
-  q_target: [1, 0, 0, 0]      # identity quaternion (nadir pointing)
-  success_threshold: 2.0     # converted to radians in __init__
-  success_bonus: 10.0
+  alpha: 0.5
+  beta: 0.01
+  tau_max: 0.1
   inertia_tensor: [0.01, 0.01, 0.02]
-  f_zone_half_angle: float = 20.0
-  boresight_axis: np.ndarray = np.array([1, 0, 0])
+  dt: 0.1
+  max_steps: 500
+  q_target: [1.0, 0.0, 0.0, 0.0]
+  success_threshold: 2.0
+  success_bonus: 10.0
+  f_zone_half_angle: 20.0
+  boresight_axis: [1.0, 0.0, 0.0]
   orbital_rate: 0.00116
+  sun_vector_init: [1.0, 0.0, 0.0]
+
+sac:
+  total_timesteps: 500000
+  learning_rate: 0.0003
+  buffer_size: 1000000
+  batch_size: 256
+  tau: 0.005
+  gamma: 0.99
+  train_freq: 1
+  gradient_steps: 1
+
+
