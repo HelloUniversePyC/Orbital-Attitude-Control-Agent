@@ -8,7 +8,8 @@ from src.envs.utils import(
     quaternion_error,
     rotate_vector,
     random_unit_vector,
-    rotate_around_axis
+    rotate_around_axis,
+    to_obs
 )
 
 class AttitudeEnv(gym.Env):
@@ -42,7 +43,7 @@ class AttitudeEnv(gym.Env):
     def reset(self, seed = None, options = {}) -> np.ndarray:
         """Return initial (objects, info)"""
         self.q: np.ndarray = random_unit_quaternion()
-        self.omega: np.ndarray = np.zeros(3)
+        self.omega: np.ndarray = np.zeros(3, dtype=np.float32)
         self.t: int = 0
         self.truncated = False
         self.terminated = False
@@ -88,9 +89,9 @@ class AttitudeEnv(gym.Env):
     def _get_obs(self) -> np.ndarray:
         """helper to package state into observation vector"""
         e_1, e_2, e_3, e_4 = quaternion_error(self.q, self.q_target)
-        obs_vector = np.array([self.q[0], self.q[1], self.q[2],self.q[3],
+        obs_vector = to_obs(np.array([self.q[0], self.q[1], self.q[2],self.q[3],
                       self.omega[0], self.omega[1],self.omega[2], 
-                      e_1, e_2, e_3,e_4])
+                      e_1, e_2, e_3,e_4]))
         return obs_vector
     def render(self) -> dict:
         return {}

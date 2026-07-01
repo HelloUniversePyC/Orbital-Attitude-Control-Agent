@@ -1,5 +1,9 @@
 import numpy as np
 
+def to_obs(arr) -> np.ndarray:
+    """Converts array to Float 32 datatype"""
+    return np.asarray(arr, dtype=np.float32)
+
 def quaternion_conjugate(q) -> np.ndarray:
     """Calculates the conjugate of a quaternion"""
     w, x, y, z = q
@@ -17,12 +21,12 @@ def quaternion_multiply(q1, q2) -> np.ndarray:
     ])
 def random_unit_quaternion() -> np.ndarray:
     """Generates a random 4 dimensional unit vector"""
-    q = np.random.randn(4)
+    q = np.random.randn(4).astype(np.float32)
     return q/np.linalg.norm(q)
 
 def random_unit_vector() -> np.ndarray:
     """Generates a random 3 dimensional unit vector"""
-    q = np.random.randn(3)
+    q = np.random.randn(3).astype(np.float32)
     return q/np.linalg.norm(q)
 
 
